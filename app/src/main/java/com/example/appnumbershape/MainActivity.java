@@ -55,13 +55,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void testButton (View view) {
 
-        String makeText, numberValue;
+        String makeText, suppliedNumber;
 
         EditText userNumber = findViewById(R.id.userNumber);
 
-        numberValue = userNumber.getText().toString();
+        suppliedNumber = userNumber.getText().toString();
 
-        if (numberValue.isEmpty()) {
+        if (suppliedNumber.isEmpty()) {
 
             makeText = "Please enter a number";
 
@@ -69,10 +69,10 @@ public class MainActivity extends AppCompatActivity {
 
             Number myNumber = new Number();
 
-            myNumber.number = Integer.parseInt(numberValue);
+            myNumber.number = Integer.parseInt(suppliedNumber);
 
 
-            if (numberValue.isEmpty()) {
+            if (suppliedNumber.isEmpty()) {
 
                 makeText = "Please enter a number";
 
