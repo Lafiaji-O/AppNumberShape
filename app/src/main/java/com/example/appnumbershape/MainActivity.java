@@ -22,17 +22,18 @@ public class MainActivity extends AppCompatActivity {
                 x++;
 
                 triangularNumber = triangularNumber + x;
-            }
-
-            if (triangularNumber == number) {
-
-                return true;
-
-            } else {
-
-                return false;
 
             }
+
+           if (triangularNumber == number) {
+
+               return true;
+
+           } else {
+
+               return false;
+           }
+
         }
 
         public boolean isSquare() {
@@ -54,48 +55,60 @@ public class MainActivity extends AppCompatActivity {
 
     public void testButton (View view) {
 
-        String makeText;
+        String makeText, numberValue;
 
-        EditText userNumber = (EditText) findViewById(R.id.userNumber);
+        EditText userNumber = findViewById(R.id.userNumber);
 
-        if (userNumber.getText().toString().isEmpty()) {
+        numberValue = userNumber.getText().toString();
 
-            makeText = ("Please enter a number");
+        if (numberValue.isEmpty()) {
 
-        }
-
-        Number myNumber = new Number();
-
-        myNumber.number = Integer.parseInt(userNumber.getText().toString());
-
-        if (myNumber.isTriangular()) {
-
-            if (myNumber.isSquare()) {
-
-                makeText= (myNumber.number + " is a triangular and square number!");
-
-            } else {
-
-                makeText = (myNumber.number + " is a triangular but not a square number.");
-
-            }
+            makeText = "Please enter a number";
 
         } else {
 
-            if (myNumber.isSquare()) {
+            Number myNumber = new Number();
 
-                makeText = (myNumber.number + " is a square but not triangular number!");
+            myNumber.number = Integer.parseInt(numberValue);
+
+
+            if (numberValue.isEmpty()) {
+
+                makeText = "Please enter a number";
 
             } else {
 
-                makeText = (myNumber.number + " is not a triangular or square number.");
+                if (myNumber.isSquare()) {
+
+                    if (myNumber.isTriangular()) {
+
+                        makeText = myNumber.number + " is both square and triangular!";
+
+                    } else {
+
+                        makeText = myNumber.number + " is square but not triangular.";
+
+                    }
+
+                } else {
+
+                    if (myNumber.isTriangular()) {
+
+                        makeText = myNumber.number + " is triangular but not square.";
+
+                    } else {
+
+                        makeText = myNumber.number + " is neither square nor triangular.";
+
+                    }
+
+                }
 
             }
+
         }
 
-
-            Toast.makeText(MainActivity.this, makeText, Toast.LENGTH_LONG).show();
-
+        Toast.makeText(MainActivity.this, makeText, Toast.LENGTH_SHORT).show();
 
     }
 
